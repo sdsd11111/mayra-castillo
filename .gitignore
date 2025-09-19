@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# Environment files
+.env
+
+# Cache files
+.cache/
+
+# VS Code settings
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.swp
+
+# IDE files
+.idea/
+*.iml
