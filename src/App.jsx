@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/pages/Home';
@@ -14,24 +15,26 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/nosotros" element={<About />} />
-            <Route path="/contacto" element={<Contact />} />
-            <Route path="/servicios/tributarios" element={<TributaryServices />} />
-            <Route path="/servicios/comercio-exterior" element={<ForeignTrade />} />
-            <Route path="/servicios/formalizacion" element={<BusinessFormalization />} />
-            <Route path="/servicios/digitales" element={<DigitalServices />} />
-            <Route path="/servicios/new-digitales" element={<NewDigitalServices />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/nosotros" element={<About />} />
+              <Route path="/contacto" element={<Contact />} />
+              <Route path="/servicios/tributarios" element={<TributaryServices />} />
+              <Route path="/servicios/comercio-exterior" element={<ForeignTrade />} />
+              <Route path="/servicios/formalizacion" element={<BusinessFormalization />} />
+              <Route path="/servicios/digitales" element={<DigitalServices />} />
+              <Route path="/servicios/new-digitales" element={<NewDigitalServices />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 

@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { 
-  Star, 
-  Handshake, 
-  Shield, 
-  ChevronDown, 
+import {
+  Star,
+  Handshake,
+  Shield,
+  ChevronDown,
   ChevronUp,
   MessageCircle,
   CheckCircle,
@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import TestimonialSection from '@/components/TestimonialSection';
 import ValuesSection from '@/components/ValuesSection';
+import SEO from '@/components/SEO';
 
 // Importar imágenes
 // La imagen del hero se carga desde la carpeta public
@@ -41,8 +42,8 @@ const Home = () => {
     if (process.env.NODE_ENV === 'development') {
       console.log('Development mode: Form data', formValues);
       setTimeout(() => {
-        setSubmitStatus({ 
-          type: 'success', 
+        setSubmitStatus({
+          type: 'success',
           message: 'Mensaje enviado correctamente (modo desarrollo). En producción, esto enviaría un correo.'
         });
         e.target.reset();
@@ -62,11 +63,11 @@ const Home = () => {
       });
 
       const data = await response.json();
-      
+
       if (response.ok) {
-        setSubmitStatus({ 
-          type: 'success', 
-          message: 'Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.' 
+        setSubmitStatus({
+          type: 'success',
+          message: 'Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.'
         });
         e.target.reset();
       } else {
@@ -74,9 +75,9 @@ const Home = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-      setSubmitStatus({ 
-        type: 'error', 
-        message: 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde o contáctanos por WhatsApp.' 
+      setSubmitStatus({
+        type: 'error',
+        message: 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde o contáctanos por WhatsApp.'
       });
     } finally {
       setIsSubmitting(false);
@@ -179,242 +180,250 @@ const Home = () => {
   ];
 
   return (
-    <div className="pt-16">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center hero-gradient">
-        <div className="absolute inset-0 overlay-dark"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-          style={{ backgroundImage: 'url(/Inicio/Hero.jpg)' }}
-        ></div>
-        
-        <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Conoce tus obligaciones, evita problemas y haz crecer tu negocio
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
-          </p>
-          <a 
-            href="https://wa.me/593960184087" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            <Button className="bg-[#3b7dbe] hover:bg-[#3b7dbe] text-white text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full">
-              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-1 sm:mr-2" />
-              <span className="whitespace-nowrap">Contáctanos por WhatsApp</span>
-            </Button>
-          </a>
-        </div>
-      </section>
-
-      {/* Valores Section */}
-      <ValuesSection values={values} />
-
-      {/* Video Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-8 text-primary-custom">
-            Descubre cómo simplificamos tu vida contable
-          </h2>
-          <div className="max-w-4xl mx-auto">
-            <iframe
-              width="100%"
-              height="315"
-              src="https://www.youtube.com/embed/1UM2TWVcJIg"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="rounded-lg"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-
-      {/* Servicios Section */}
-      <section className="py-20 bg-gray-50 bg-fixed bg-center bg-cover relative" style={{ backgroundImage: 'url(/parallax.jpg)' }}>
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 bg-black text-white p-6 rounded-lg">
-            <h2 className="text-4xl font-bold mb-6">Nuestros Servicios</h2>
-            <p className="text-lg max-w-3xl mx-auto">
-              Nuestra cartera de servicios está diseñada para cubrir todas tus necesidades contables, 
-              tributarias y financieras, ayudándote a cumplir con tus obligaciones y a crecer con seguridad.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="hover-scale card-shadow overflow-hidden">
-                <div className="relative">
-                  <div className="bg-primary-custom text-white p-6">
-                    <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                  </div>
-                  <CardContent className="p-6">
-                    <p className="text-gray-700 mb-4">{service.description}</p>
-                    <ul className="space-y-2 mb-6">
-                      {service.services.map((item, idx) => (
-                        <li key={idx} className="flex items-start space-x-2">
-                          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-gray-600">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link to={service.link}>
-                      <Button variant="outline" className="w-full">
-                        Más información
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonios Section */}
-      <TestimonialSection 
-        testimonials={testimonials}
-        images={[
-          '/Testimonio-1.jpg',
-          '/Testimonio-2.jpg',
-          '/Testimonio-3.jpg'
-        ]}
+    <>
+      <SEO
+        title="Ing. Mayra Castillo - Contadora Profesional en Loja, Ecuador"
+        description="Servicios profesionales de contabilidad, asesoría tributaria, comercio exterior y formalización de negocios en Loja, Ecuador. Conoce tus obligaciones y haz crecer tu negocio."
+        url="/"
+        image="/Logo.jpg"
       />
+      <div className="pt-16">
+        {/* Hero Section */}
+        <section className="relative min-h-screen flex items-center justify-center hero-gradient">
+          <div className="absolute inset-0 overlay-dark"></div>
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+            style={{ backgroundImage: 'url(/Inicio/Hero.jpg)' }}
+          ></div>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-primary-custom">Preguntas Frecuentes</h2>
+          <div className="relative z-10 container mx-auto px-4 text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Conoce tus obligaciones, evita problemas y haz crecer tu negocio
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
+            </p>
+            <a
+              href="https://wa.me/593960184087"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="bg-[#3b7dbe] hover:bg-[#3b7dbe] text-white text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full">
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-1 sm:mr-2" />
+                <span className="whitespace-nowrap">Contáctanos por WhatsApp</span>
+              </Button>
+            </a>
           </div>
+        </section>
 
-          <div className="max-w-4xl mx-auto space-y-4">
-            {faqs.map((faq, index) => (
-              <Card key={index} className="overflow-hidden">
+        {/* Valores Section */}
+        <ValuesSection values={values} />
+
+        {/* Video Section */}
+        <section className="py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-8 text-primary-custom">
+              Descubre cómo simplificamos tu vida contable
+            </h2>
+            <div className="max-w-4xl mx-auto">
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/1UM2TWVcJIg"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+
+        {/* Servicios Section */}
+        <section className="py-20 bg-gray-50 bg-fixed bg-center bg-cover relative" style={{ backgroundImage: 'url(/parallax.jpg)' }}>
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-16 bg-black text-white p-6 rounded-lg">
+              <h2 className="text-4xl font-bold mb-6">Nuestros Servicios</h2>
+              <p className="text-lg max-w-3xl mx-auto">
+                Nuestra cartera de servicios está diseñada para cubrir todas tus necesidades contables,
+                tributarias y financieras, ayudándote a cumplir con tus obligaciones y a crecer con seguridad.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <Card key={index} className="hover-scale card-shadow overflow-hidden">
+                  <div className="relative">
+                    <div className="bg-primary-custom text-white p-6">
+                      <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                    </div>
+                    <CardContent className="p-6">
+                      <p className="text-gray-700 mb-4">{service.description}</p>
+                      <ul className="space-y-2 mb-6">
+                        {service.services.map((item, idx) => (
+                          <li key={idx} className="flex items-start space-x-2">
+                            <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-gray-600">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Link to={service.link}>
+                        <Button variant="outline" className="w-full">
+                          Más información
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonios Section */}
+        <TestimonialSection
+          testimonials={testimonials}
+          images={[
+            '/Testimonio-1.jpg',
+            '/Testimonio-2.jpg',
+            '/Testimonio-3.jpg'
+          ]}
+        />
+
+        {/* FAQ Section */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-6 text-primary-custom">Preguntas Frecuentes</h2>
+            </div>
+
+            <div className="max-w-4xl mx-auto space-y-4">
+              {faqs.map((faq, index) => (
+                <Card key={index} className="overflow-hidden">
+                  <button
+                    className="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50 smooth-transition"
+                    onClick={() => toggleFaq(index)}
+                  >
+                    <h3 className="text-lg font-semibold pr-4">{faq.question}</h3>
+                    {openFaq === index ? (
+                      <ChevronUp className="w-5 h-5 text-primary-custom flex-shrink-0" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5 text-primary-custom flex-shrink-0" />
+                    )}
+                  </button>
+                  {openFaq === index && (
+                    <div className="px-6 pb-6">
+                      <p className="text-gray-700">{faq.answer}</p>
+                    </div>
+                  )}
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Form Section */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-primary-custom mb-4">Contáctanos</h2>
+              <p className="text-lg text-gray-700">Déjanos tus datos y nos pondremos en contacto contigo lo antes posible.</p>
+            </div>
+            <form onSubmit={handleHomeContactSubmit} className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+              <div className="mb-4">
+                <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Nombre completo</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
+                  placeholder="Ingresa tu nombre completo"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Correo electrónico</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
+                  placeholder="Ingresa tu correo electrónico"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">Teléfono</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
+                  placeholder="Ingresa tu número de teléfono"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-gray-700 font-medium mb-2">Mensaje</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
+                  placeholder="Escribe tu mensaje"
+                  required
+                  disabled={isSubmitting}
+                ></textarea>
+              </div>
+
+              {submitStatus.message && (
+                <div className={`p-3 rounded-md mb-6 ${submitStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                  {submitStatus.message}
+                </div>
+              )}
+
+              <div className="space-y-4">
                 <button
-                  className="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50 smooth-transition"
-                  onClick={() => toggleFaq(index)}
+                  type="submit"
+                  className={`w-full bg-accent-custom hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary-custom ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
+                  disabled={isSubmitting}
                 >
-                  <h3 className="text-lg font-semibold pr-4">{faq.question}</h3>
-                  {openFaq === index ? (
-                    <ChevronUp className="w-5 h-5 text-primary-custom flex-shrink-0" />
+                  {isSubmitting ? (
+                    <div className="flex items-center justify-center">
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Enviando...
+                    </div>
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-primary-custom flex-shrink-0" />
+                    'Enviar mensaje'
                   )}
                 </button>
-                {openFaq === index && (
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-700">{faq.answer}</p>
-                  </div>
-                )}
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Contact Form Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-primary-custom mb-4">Contáctanos</h2>
-            <p className="text-lg text-gray-700">Déjanos tus datos y nos pondremos en contacto contigo lo antes posible.</p>
-          </div>
-          <form onSubmit={handleHomeContactSubmit} className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Nombre completo</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
-                placeholder="Ingresa tu nombre completo"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Correo electrónico</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
-                placeholder="Ingresa tu correo electrónico"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">Teléfono</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
-                placeholder="Ingresa tu número de teléfono"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="mb-6">
-              <label htmlFor="message" className="block text-gray-700 font-medium mb-2">Mensaje</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
-                placeholder="Escribe tu mensaje"
-                required
-                disabled={isSubmitting}
-              ></textarea>
-            </div>
-            
-            {submitStatus.message && (
-              <div className={`p-3 rounded-md mb-6 ${submitStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-                {submitStatus.message}
+                <p className="text-sm text-gray-500 text-center">
+                  O si lo prefieres, contáctanos directamente por WhatsApp
+                </p>
+
+                <a
+                  href="https://wa.me/593960184087"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-md transition-colors"
+                >
+                  <MessageCircle className="mr-2" />
+                  Chatear por WhatsApp
+                </a>
               </div>
-            )}
-            
-            <div className="space-y-4">
-              <button
-                type="submit"
-                className={`w-full bg-accent-custom hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary-custom ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <div className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Enviando...
-                  </div>
-                ) : (
-                  'Enviar mensaje'
-                )}
-              </button>
-              
-              <p className="text-sm text-gray-500 text-center">
-                O si lo prefieres, contáctanos directamente por WhatsApp
-              </p>
-              
-              <a 
-                href="https://wa.me/593960184087" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-md transition-colors"
-              >
-                <MessageCircle className="mr-2" />
-                Chatear por WhatsApp
-              </a>
-            </div>
-          </form>
-        </div>
-      </section>
-    </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 
