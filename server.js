@@ -1,7 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
-require('dotenv').config();
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,31 +11,36 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// Configuración de Nodemailer
+// Configuración del transporte de correo
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
-  port: process.env.EMAIL_PORT,
-  secure: true,
+  port: parseInt(process.env.EMAIL_PORT || '465'),
+  secure: true, // true para puerto 465
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
+    pass: process.env.EMAIL_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false
   }
 });
 
-// Ruta de prueba
-app.get('/', (req, res) => {
-  res.send('Servidor de correo funcionando correctamente');
-});
+// Verificar configuración al iniciar
+console.log('Configuración de correo:');
+console.log('- Host:', process.env.EMAIL_HOST);
+console.log('- Port:', process.env.EMAIL_PORT);
+console.log('- User:', process.env.EMAIL_USER);
+console.log('- Pass configurado:', process.env.EMAIL_PASS ? 'Sí' : 'No');
 
-// Ruta para enviar correos
+// Ruta para manejar el envío de correos
 app.post('/api/send-email', async (req, res) => {
   try {
     const { name, email, phone, message } = req.body;
 
+    // Configuración del correo
     const mailOptions = {
-      from: `"${name}" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
+      from: `"Sitio Web" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER, // Correo al que llegará el mensaje
       subject: `Nuevo mensaje de contacto de ${name}`,
       html: `
         <h2>Nuevo mensaje de contacto</h2>
@@ -46,20 +52,45 @@ app.post('/api/send-email', async (req, res) => {
       `,
     };
 
+    // Enviar el correo
     await transporter.sendMail(mailOptions);
-    console.log('Correo enviado correctamente');
+
+    // Enviar confirmación al remitente
+    const confirmOptions = {
+      from: `"Ingeniera Mayra Castillo" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: '¡Gracias por contactarnos!',
+      html: `
+        <h2>¡Gracias por contactarnos, ${name}!</h2>
+        <p>Hemos recibido tu mensaje y nos pondremos en contacto contigo lo antes posible.</p>
+        <p><strong>Tu mensaje:</strong></p>
+        <p>${message}</p>
+        <p>Atentamente,<br>El equipo de Ing. Mayra Castillo</p>
+      `,
+    };
+
+    await transporter.sendMail(confirmOptions);
+
     res.status(200).json({ success: true, message: 'Mensaje enviado correctamente' });
   } catch (error) {
     console.error('Error al enviar el correo:', error);
-    res.status(500).json({ 
-      success: false, 
-      message: 'Error al enviar el mensaje',
-      error: error.message 
+    res.status(500).json({
+      success: false,
+      message: 'Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.'
     });
   }
 });
 
+// En producción, servimos la aplicación React
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+}
+
 // Iniciar el servidor
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
 });

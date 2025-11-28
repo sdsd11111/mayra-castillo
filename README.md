@@ -67,6 +67,59 @@ npm run build
 npm run preview
 ```
 
+## Configuración del Formulario de Contacto
+
+El sitio incluye un formulario de contacto funcional que envía correos electrónicos. La configuración funciona tanto en desarrollo local como en producción (Vercel).
+
+### Configuración de Variables de Entorno
+
+1. **Copia el archivo de ejemplo**:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Edita el archivo `.env` con tus credenciales**:
+   ```env
+   EMAIL_HOST=mail.ingmayracastillo.com
+   EMAIL_PORT=465
+   EMAIL_USER=email@ingmayracastillo.com
+   EMAIL_PASS=tu-contraseña-aquí
+   VITE_API_URL=/api
+   ```
+
+### Desarrollo Local
+
+Para probar el formulario en local:
+
+```bash
+# Iniciar el servidor Express (en una terminal)
+npm start
+
+# En otra terminal, iniciar el servidor de desarrollo
+npm run dev
+```
+
+El servidor Express correrá en el puerto 3001 y manejará el envío de correos.
+
+### Producción en Vercel
+
+1. **Configura las variables de entorno en Vercel**:
+   - Ve a tu proyecto en Vercel Dashboard
+   - Settings → Environment Variables
+   - Agrega las siguientes variables:
+     - `EMAIL_HOST`: mail.ingmayracastillo.com
+     - `EMAIL_PORT`: 465
+     - `EMAIL_USER`: email@ingmayracastillo.com
+     - `EMAIL_PASS`: tu-contraseña-aquí
+
+2. **Deploy**:
+   ```bash
+   # Vercel detectará automáticamente la configuración
+   vercel --prod
+   ```
+
+La función serverless en `api/send-email/index.js` manejará los correos en producción.
+
 ## Información de Contacto
 
 ### Datos de la Empresa
