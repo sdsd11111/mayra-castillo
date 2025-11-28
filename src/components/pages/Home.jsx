@@ -14,15 +14,73 @@ import {
   Users,
   Award
 } from 'lucide-react';
+import TestimonialSection from '@/components/TestimonialSection';
+import ValuesSection from '@/components/ValuesSection';
 
 // Importar imágenes
-import heroImage from '../../assets/uS03Ie7SfxIc.jpg';
+// La imagen del hero se carga desde la carpeta public
 
 const Home = () => {
   const [openFaq, setOpenFaq] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const handleHomeContactSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    const formData = new FormData(e.target);
+    const formValues = Object.fromEntries(formData.entries());
+
+    // In development, show success without sending email
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Development mode: Form data', formValues);
+      setTimeout(() => {
+        setSubmitStatus({ 
+          type: 'success', 
+          message: 'Mensaje enviado correctamente (modo desarrollo). En producción, esto enviaría un correo.'
+        });
+        e.target.reset();
+        setIsSubmitting(false);
+      }, 1000);
+      return;
+    }
+
+    // Production code
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formValues),
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        setSubmitStatus({ 
+          type: 'success', 
+          message: 'Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.' 
+        });
+        e.target.reset();
+      } else {
+        throw new Error(data.error || 'Error al enviar el mensaje');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde o contáctanos por WhatsApp.' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const services = [
@@ -127,7 +185,7 @@ const Home = () => {
         <div className="absolute inset-0 overlay-dark"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-          style={{ backgroundImage: `url(${heroImage})` }}
+          style={{ backgroundImage: 'url(/Inicio/Hero.jpg)' }}
         ></div>
         
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
@@ -141,41 +199,16 @@ const Home = () => {
             target="_blank" 
             rel="noopener noreferrer"
           >
-            <Button className="bg-[#3b7dbe] hover:bg-[#3b7dbe] text-white text-lg px-8 py-4 rounded-full">
-              <MessageCircle className="mr-2" />
-              Contáctanos por WhatsApp
+            <Button className="bg-[#3b7dbe] hover:bg-[#3b7dbe] text-white text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full">
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-1 sm:mr-2" />
+              <span className="whitespace-nowrap">Contáctanos por WhatsApp</span>
             </Button>
           </a>
         </div>
       </section>
 
-      {/* Quienes Somos Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-primary-custom">
-              Ing. Mayra Castillo - Más que una contadora, tu aliada estratégica
-            </h2>
-            <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
-              Somos más que un servicio contable; somos tu paraguas de seguridad fiscal. Asumimos la responsabilidad de cada trámite para que tú te enfoques en crecer, sin miedo a multas o errores. Tu tranquilidad es nuestra principal métrica de éxito.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <Card key={index} className="text-center hover-scale card-shadow">
-                <CardContent className="p-8">
-                  <div className="flex justify-center mb-4">
-                    {value.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                  <p className="text-gray-600">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Valores Section */}
+      <ValuesSection values={values} />
 
       {/* Video Section */}
       <section className="py-20">
@@ -241,41 +274,14 @@ const Home = () => {
       </section>
 
       {/* Testimonios Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-primary-custom">Lo que nuestros clientes dicen</h2>
-            <p className="text-lg text-gray-700">
-              Nuestra experiencia se mide en la tranquilidad y el éxito de nuestros clientes.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover-scale card-shadow">
-                <CardContent className="p-8">
-                  <div className="flex justify-center mb-4">
-                    <img
-                      src={`/Testimonio-${index + 1}.jpg`}
-                      alt={`Testimonio ${index + 1}`}
-                      className="w-16 h-16 rounded-full object-cover mb-4 mx-auto"
-                    />
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-gray-700 mb-6 italic">"{testimonial.text}"</p>
-                  <div className="text-center">
-                    <p className="font-semibold text-primary-custom">{testimonial.author}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialSection 
+        testimonials={testimonials}
+        images={[
+          '/Testimonio-1.jpg',
+          '/Testimonio-2.jpg',
+          '/Testimonio-3.jpg'
+        ]}
+      />
 
       {/* FAQ Section */}
       <section className="py-20 bg-gray-50">
@@ -312,11 +318,11 @@ const Home = () => {
       {/* Contact Form Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center">
             <h2 className="text-4xl font-bold text-primary-custom mb-4">Contáctanos</h2>
             <p className="text-lg text-gray-700">Déjanos tus datos y nos pondremos en contacto contigo lo antes posible.</p>
           </div>
-          <form className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+          <form onSubmit={handleHomeContactSubmit} className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
             <div className="mb-4">
               <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Nombre completo</label>
               <input
@@ -326,6 +332,7 @@ const Home = () => {
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
                 placeholder="Ingresa tu nombre completo"
                 required
+                disabled={isSubmitting}
               />
             </div>
             <div className="mb-4">
@@ -337,6 +344,7 @@ const Home = () => {
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
                 placeholder="Ingresa tu correo electrónico"
                 required
+                disabled={isSubmitting}
               />
             </div>
             <div className="mb-4">
@@ -348,6 +356,7 @@ const Home = () => {
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
                 placeholder="Ingresa tu número de teléfono"
                 required
+                disabled={isSubmitting}
               />
             </div>
             <div className="mb-6">
@@ -359,15 +368,48 @@ const Home = () => {
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-custom"
                 placeholder="Escribe tu mensaje"
                 required
+                disabled={isSubmitting}
               ></textarea>
             </div>
-            <div className="text-center">
+            
+            {submitStatus.message && (
+              <div className={`p-3 rounded-md mb-6 ${submitStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                {submitStatus.message}
+              </div>
+            )}
+            
+            <div className="space-y-4">
               <button
                 type="submit"
-                className="bg-[#3b7dbe] hover:bg-[#3b7dbe] text-white font-medium py-2 px-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary-custom"
+                className={`w-full bg-accent-custom hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-primary-custom ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
+                disabled={isSubmitting}
               >
-                Enviar mensaje
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Enviando...
+                  </div>
+                ) : (
+                  'Enviar mensaje'
+                )}
               </button>
+              
+              <p className="text-sm text-gray-500 text-center">
+                O si lo prefieres, contáctanos directamente por WhatsApp
+              </p>
+              
+              <a 
+                href="https://wa.me/593960184087" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-md transition-colors"
+              >
+                <MessageCircle className="mr-2" />
+                Chatear por WhatsApp
+              </a>
             </div>
           </form>
         </div>

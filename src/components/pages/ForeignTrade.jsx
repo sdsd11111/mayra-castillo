@@ -78,39 +78,88 @@ const ForeignTrade = () => {
             <h2 className="text-3xl font-bold mb-8 text-primary-custom">
               Tu puerta de entrada al comercio internacional
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-              <Card className="hover-scale card-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Guía en Importaciones y Exportaciones</h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    Te guiamos en cada paso de tus importaciones y exportaciones. Te conectamos con nuestra red de contactos confiables, como agentes de aduana y transportistas.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="hover-scale card-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Accesos y Asesoría Logística</h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    También tramitamos accesos a los puertos y brindamos asesoría logística integral.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="hover-scale card-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Simplificación de Procesos</h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    Sabemos que el comercio exterior puede ser complejo y lleno de regulaciones. Por eso, nuestro enfoque se centra en simplificar estos procesos.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="hover-scale card-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Conexión con Profesionales</h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    Te conectamos con los mejores profesionales del sector, garantizando que tus operaciones se realicen de manera eficiente y segura.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="relative">
+              {/* Mobile slider container */}
+              <div className="md:hidden overflow-hidden w-full">
+                <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4">
+                  <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <h3 className="text-xl font-semibold mb-4 text-primary-custom">Guía en Importaciones y Exportaciones</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Te guiamos en cada paso de tus importaciones y exportaciones. Te conectamos con nuestra red de contactos confiables, como agentes de aduana y transportistas.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <h3 className="text-xl font-semibold mb-4 text-primary-custom">Accesos y Asesoría Logística</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          También tramitamos accesos a los puertos y brindamos asesoría logística integral.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <h3 className="text-xl font-semibold mb-4 text-primary-custom">Simplificación de Procesos</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Simplificamos los trámites de comercio exterior para que puedas enfocarte en hacer crecer tu negocio a nivel internacional.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <h3 className="text-xl font-semibold mb-4 text-primary-custom">Red de Contactos Confiables</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Accede a nuestra red de agentes de aduana, transportistas y proveedores verificados para garantizar el éxito de tus operaciones.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop grid */}
+              <div className="hidden md:grid grid-cols-2 gap-8">
+                <Card className="hover-scale card-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-4 text-primary-custom">Guía en Importaciones y Exportaciones</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Te guiamos en cada paso de tus importaciones y exportaciones. Te conectamos con nuestra red de contactos confiables, como agentes de aduana y transportistas.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="hover-scale card-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-4 text-primary-custom">Accesos y Asesoría Logística</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      También tramitamos accesos a los puertos y brindamos asesoría logística integral.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="hover-scale card-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-4 text-primary-custom">Simplificación de Procesos</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Simplificamos los trámites de comercio exterior para que puedas enfocarte en hacer crecer tu negocio a nivel internacional.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="hover-scale card-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-4 text-primary-custom">Red de Contactos Confiables</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Accede a nuestra red de agentes de aduana, transportistas y proveedores verificados para garantizar el éxito de tus operaciones.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
@@ -175,46 +224,102 @@ const ForeignTrade = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="text-center hover-scale card-shadow">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-8 h-8 text-blue-600" />
+          <div className="relative">
+            {/* Mobile slider container */}
+            <div className="md:hidden overflow-hidden w-full">
+              <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4">
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Shield className="w-8 h-8 text-blue-600" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">Agentes de Aduana</h3>
+                      <p className="text-gray-600 text-sm">Certificados y con amplia experiencia en trámites aduaneros</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Agentes de Aduana</h3>
-                <p className="text-gray-600 text-sm">Certificados y con amplia experiencia en trámites aduaneros</p>
-              </CardContent>
-            </Card>
 
-            <Card className="text-center hover-scale card-shadow">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Truck className="w-8 h-8 text-green-600" />
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Truck className="w-8 h-8 text-green-600" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">Transportistas</h3>
+                      <p className="text-gray-600 text-sm">Empresas de logística confiables para el transporte de mercancías</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Transportistas</h3>
-                <p className="text-gray-600 text-sm">Empresas de logística confiables para el transporte de mercancías</p>
-              </CardContent>
-            </Card>
 
-            <Card className="text-center hover-scale card-shadow">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Globe className="w-8 h-8 text-purple-600" />
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Globe className="w-8 h-8 text-purple-600" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">Operadores Logísticos</h3>
+                      <p className="text-gray-600 text-sm">Especialistas en cadena de suministro internacional</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Operadores Logísticos</h3>
-                <p className="text-gray-600 text-sm">Especialistas en cadena de suministro internacional</p>
-              </CardContent>
-            </Card>
 
-            <Card className="text-center hover-scale card-shadow">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-orange-600" />
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Users className="w-8 h-8 text-orange-600" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">Consultores</h3>
+                      <p className="text-gray-600 text-sm">Expertos en regulaciones y normativas internacionales</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Consultores</h3>
-                <p className="text-gray-600 text-sm">Expertos en regulaciones y normativas internacionales</p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
+
+            {/* Desktop grid */}
+            <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <Card className="text-center hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Shield className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">Agentes de Aduana</h3>
+                  <p className="text-gray-600 text-sm">Certificados y con amplia experiencia en trámites aduaneros</p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Truck className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">Transportistas</h3>
+                  <p className="text-gray-600 text-sm">Empresas de logística confiables para el transporte de mercancías</p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Globe className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">Operadores Logísticos</h3>
+                  <p className="text-gray-600 text-sm">Especialistas en cadena de suministro internacional</p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-8 h-8 text-orange-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">Consultores</h3>
+                  <p className="text-gray-600 text-sm">Expertos en regulaciones y normativas internacionales</p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -229,37 +334,85 @@ const ForeignTrade = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">1</span>
+          <div className="relative">
+            {/* Mobile slider container */}
+            <div className="md:hidden overflow-hidden w-full">
+              <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4">
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                    <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold text-xl">1</span>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">Evaluación inicial</h3>
+                    <p className="text-gray-600">Analizamos tus necesidades específicas de comercio exterior</p>
+                  </div>
+                </div>
+
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                    <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold text-xl">2</span>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">Conexión con expertos</h3>
+                    <p className="text-gray-600">Te conectamos con los mejores profesionales para tu caso</p>
+                  </div>
+                </div>
+
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                    <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold text-xl">3</span>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">Gestión integral</h3>
+                    <p className="text-gray-600">Coordinamos todos los aspectos de tu operación comercial</p>
+                  </div>
+                </div>
+
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                    <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold text-xl">4</span>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">Seguimiento continuo</h3>
+                    <p className="text-gray-600">Monitoreamos el progreso y te mantenemos informado</p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Evaluación inicial</h3>
-              <p className="text-gray-600">Analizamos tus necesidades específicas de comercio exterior</p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">2</span>
+            {/* Desktop grid */}
+            <div className="hidden md:grid grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">1</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Evaluación inicial</h3>
+                <p className="text-gray-600">Analizamos tus necesidades específicas de comercio exterior</p>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Conexión con expertos</h3>
-              <p className="text-gray-600">Te conectamos con los mejores profesionales para tu caso</p>
-            </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">3</span>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">2</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Conexión con expertos</h3>
+                <p className="text-gray-600">Te conectamos con los mejores profesionales para tu caso</p>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Gestión integral</h3>
-              <p className="text-gray-600">Coordinamos todos los aspectos de tu operación comercial</p>
-            </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">4</span>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">3</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Gestión integral</h3>
+                <p className="text-gray-600">Coordinamos todos los aspectos de tu operación comercial</p>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Seguimiento continuo</h3>
-              <p className="text-gray-600">Monitoreamos el progreso y te mantenemos informado</p>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">4</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Seguimiento continuo</h3>
+                <p className="text-gray-600">Monitoreamos el progreso y te mantenemos informado</p>
+              </div>
             </div>
           </div>
         </div>

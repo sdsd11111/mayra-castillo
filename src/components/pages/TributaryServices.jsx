@@ -73,39 +73,88 @@ const TributaryServices = () => {
             <h2 className="text-3xl font-bold mb-8 text-primary-custom">
               Tu tranquilidad tributaria es nuestra prioridad
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-              <Card className="hover-scale card-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Simplificación de Obligaciones</h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    Simplificamos tus obligaciones tributarias para que te enfoques en el éxito de tu negocio. Ofrecemos declaración de impuestos (IVA, Renta, Herencias), devolución de IVA y Renta y elaboración de anexos.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="hover-scale card-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Cumplimiento y Evitación de Multas</h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    Te ayudamos a cumplir con tus responsabilidades sin complicaciones y a evitar multas.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="hover-scale card-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Optimización Fiscal</h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    Nuestro enfoque va más allá de la simple presentación de declaraciones. Analizamos tu situación particular, identificamos oportunidades de optimización fiscal y te brindamos asesoría estratégica.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="hover-scale card-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Decisiones Estratégicas</h3>
-                  <p className="text-gray-700 leading-relaxed">
-                    Te brindamos asesoría estratégica para que tomes las mejores decisiones para tu negocio.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="relative">
+              {/* Mobile slider container */}
+              <div className="md:hidden overflow-hidden w-full">
+                <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4">
+                  <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <h3 className="text-xl font-semibold mb-4 text-primary-custom">Simplificación de Obligaciones</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Simplificamos tus obligaciones tributarias para que te enfoques en el éxito de tu negocio. Ofrecemos declaración de impuestos (IVA, Renta, Herencias), devolución de IVA y Renta y elaboración de anexos.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <h3 className="text-xl font-semibold mb-4 text-primary-custom">Cumplimiento y Evitación de Multas</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Te ayudamos a cumplir con tus responsabilidades sin complicaciones y a evitar multas.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <h3 className="text-xl font-semibold mb-4 text-primary-custom">Optimización Fiscal</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Nuestro enfoque va más allá de la simple presentación de declaraciones. Analizamos tu situación particular, identificamos oportunidades de optimización fiscal y te brindamos asesoría estratégica.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <h3 className="text-xl font-semibold mb-4 text-primary-custom">Decisiones Estratégicas</h3>
+                        <p className="text-gray-700 leading-relaxed">
+                          Te brindamos asesoría estratégica para que tomes las mejores decisiones para tu negocio.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop grid */}
+              <div className="hidden md:grid grid-cols-2 gap-8">
+                <Card className="hover-scale card-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-4 text-primary-custom">Simplificación de Obligaciones</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Simplificamos tus obligaciones tributarias para que te enfoques en el éxito de tu negocio. Ofrecemos declaración de impuestos (IVA, Renta, Herencias), devolución de IVA y Renta y elaboración de anexos.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="hover-scale card-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-4 text-primary-custom">Cumplimiento y Evitación de Multas</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Te ayudamos a cumplir con tus responsabilidades sin complicaciones y a evitar multas.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="hover-scale card-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-4 text-primary-custom">Optimización Fiscal</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Nuestro enfoque va más allá de la simple presentación de declaraciones. Analizamos tu situación particular, identificamos oportunidades de optimización fiscal y te brindamos asesoría estratégica.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="hover-scale card-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-4 text-primary-custom">Decisiones Estratégicas</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Te brindamos asesoría estratégica para que tomes las mejores decisiones para tu negocio.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
@@ -147,18 +196,40 @@ const TributaryServices = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="text-center hover-scale card-shadow">
-                <CardContent className="p-8">
-                  <div className="flex justify-center mb-4">
-                    {benefit.icon}
+          <div className="relative">
+            {/* Mobile slider container */}
+            <div className="md:hidden overflow-hidden w-full">
+              <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                    <Card className="h-full">
+                      <CardContent className="p-6 h-full">
+                        <div className="flex justify-center mb-4">
+                          {benefit.icon}
+                        </div>
+                        <h3 className="text-xl font-semibold mb-4">{benefit.title}</h3>
+                        <p className="text-gray-600">{benefit.description}</p>
+                      </CardContent>
+                    </Card>
                   </div>
-                  <h3 className="text-xl font-semibold mb-4">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop grid */}
+            <div className="hidden md:grid grid-cols-3 gap-8">
+              {benefits.map((benefit, index) => (
+                <Card key={index} className="text-center hover-scale card-shadow">
+                  <CardContent className="p-8">
+                    <div className="flex justify-center mb-4">
+                      {benefit.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4">{benefit.title}</h3>
+                    <p className="text-gray-600">{benefit.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -173,37 +244,85 @@ const TributaryServices = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">1</span>
+          <div className="relative">
+            {/* Mobile slider container */}
+            <div className="md:hidden overflow-hidden w-full">
+              <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4">
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                    <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold text-xl">1</span>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">Análisis inicial</h3>
+                    <p className="text-gray-600">Revisamos tu situación actual y identificamos oportunidades</p>
+                  </div>
+                </div>
+
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                    <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold text-xl">2</span>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">Planificación</h3>
+                    <p className="text-gray-600">Desarrollamos una estrategia personalizada para tu caso</p>
+                  </div>
+                </div>
+
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                    <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold text-xl">3</span>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">Ejecución</h3>
+                    <p className="text-gray-600">Preparamos y presentamos todas las declaraciones necesarias</p>
+                  </div>
+                </div>
+
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                    <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold text-xl">4</span>
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2">Seguimiento</h3>
+                    <p className="text-gray-600">Monitoreamos el cumplimiento y te mantenemos informado</p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Análisis inicial</h3>
-              <p className="text-gray-600">Revisamos tu situación actual y identificamos oportunidades</p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">2</span>
+            {/* Desktop grid */}
+            <div className="hidden md:grid grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">1</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Análisis inicial</h3>
+                <p className="text-gray-600">Revisamos tu situación actual y identificamos oportunidades</p>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Planificación</h3>
-              <p className="text-gray-600">Desarrollamos una estrategia personalizada para tu caso</p>
-            </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">3</span>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">2</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Planificación</h3>
+                <p className="text-gray-600">Desarrollamos una estrategia personalizada para tu caso</p>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Ejecución</h3>
-              <p className="text-gray-600">Preparamos y presentamos todas las declaraciones necesarias</p>
-            </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">4</span>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">3</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Ejecución</h3>
+                <p className="text-gray-600">Preparamos y presentamos todas las declaraciones necesarias</p>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Seguimiento</h3>
-              <p className="text-gray-600">Monitoreamos el cumplimiento y te mantenemos informado</p>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">4</span>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">Seguimiento</h3>
+                <p className="text-gray-600">Monitoreamos el cumplimiento y te mantenemos informado</p>
+              </div>
             </div>
           </div>
         </div>

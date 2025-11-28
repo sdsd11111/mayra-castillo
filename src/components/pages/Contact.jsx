@@ -29,18 +29,73 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Crear mensaje para WhatsApp
-    const message = `Hola, me gustaría contactar con ustedes.
-    
-Nombre: ${formData.nombre}
-Email: ${formData.email}
-Teléfono: ${formData.telefono}
-Mensaje: ${formData.mensaje}`;
-    
-    const whatsappUrl = `https://wa.me/593960184087?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    // In development, show success without sending email
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Development mode: Form data', formData);
+      setTimeout(() => {
+        setSubmitStatus({ 
+          type: 'success', 
+          message: 'Mensaje enviado correctamente (modo desarrollo). En producción, esto enviaría un correo.'
+        });
+        setFormData({
+          nombre: '',
+          email: '',
+          telefono: '',
+          mensaje: ''
+        });
+        setIsSubmitting(false);
+      }, 1000);
+      return;
+    }
+
+    // Production code
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.nombre,
+          email: formData.email,
+          phone: formData.telefono,
+          message: formData.mensaje
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({ 
+          type: 'success', 
+          message: 'Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.' 
+        });
+        setFormData({
+          nombre: '',
+          email: '',
+          telefono: '',
+          mensaje: ''
+        });
+      } else {
+        throw new Error(data.error || 'Error al enviar el mensaje');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde o contáctanos por WhatsApp.' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const testimonials = [
@@ -65,7 +120,7 @@ Mensaje: ${formData.mensaje}`;
         <div className="absolute inset-0 overlay-dark"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-          style={{ backgroundImage: `url('/Contacto/Hero.jpg')` }}
+          style={{ backgroundImage: 'url(/Contacto/hero.jpg)' }}
         ></div>
         
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
@@ -162,13 +217,45 @@ Mensaje: ${formData.mensaje}`;
                       />
                     </div>
 
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-accent-custom hover:bg-orange-600 text-white py-3"
-                    >
-                      <MessageCircle className="mr-2" />
-                      Enviar mensaje por WhatsApp
-                    </Button>
+                    <div className="space-y-4">
+                      {submitStatus.message && (
+                        <div className={`p-3 rounded-md ${submitStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                          {submitStatus.message}
+                        </div>
+                      )}
+                      <Button 
+                        type="submit" 
+                        className={`w-full bg-accent-custom hover:bg-orange-600 text-white py-3 ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Enviando...
+                          </>
+                        ) : (
+                          <>
+                            <MessageCircle className="mr-2" />
+                            Enviar mensaje
+                          </>
+                        )}
+                      </Button>
+                      <p className="text-sm text-gray-500 text-center">
+                        O si lo prefieres, contáctanos directamente por WhatsApp
+                      </p>
+                      <a 
+                        href="https://wa.me/593960184087" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-md transition-colors"
+                      >
+                        <MessageCircle className="mr-2" />
+                        Chatear por WhatsApp
+                      </a>
+                    </div>
                   </form>
                 </CardContent>
               </Card>

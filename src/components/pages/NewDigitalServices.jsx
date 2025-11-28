@@ -61,39 +61,88 @@ const NewDigitalServices = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="hover-scale card-shadow">
-              <CardContent className="p-6">
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  En un mundo cada vez más digital, te ayudamos a gestionar tu firma electrónica y a configurar 
-                  todos los accesos para tus trámites en línea.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="relative">
+            {/* Mobile slider container */}
+            <div className="md:hidden w-full overflow-hidden px-4">
+              <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -ml-4">
+                <div className="flex-none w-5/6 sm:w-2/3 pl-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        En un mundo cada vez más digital, te ayudamos a gestionar tu firma electrónica y a configurar 
+                        todos los accesos para tus trámites en línea.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <Card className="hover-scale card-shadow">
-              <CardContent className="p-6">
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  Facilitamos el proceso para que puedas hacer tus gestiones desde donde estés, de forma segura y eficiente.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="flex-none w-5/6 sm:w-2/3 pl-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Facilitamos el proceso para que puedas hacer tus gestiones desde donde estés, de forma segura y eficiente.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <Card className="hover-scale card-shadow">
-              <CardContent className="p-6">
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  La transformación digital no es solo una tendencia, es una necesidad.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="flex-none w-5/6 sm:w-2/3 pl-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        La transformación digital no es solo una tendencia, es una necesidad.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <Card className="hover-scale card-shadow">
-              <CardContent className="p-6">
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  Te acompañamos en este proceso para que aproveches todas las ventajas de la tecnología sin complicaciones.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="flex-none w-5/6 sm:w-2/3 pl-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        Te acompañamos en este proceso para que aproveches todas las ventajas de la tecnología sin complicaciones.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop grid */}
+            <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <Card className="hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    En un mundo cada vez más digital, te ayudamos a gestionar tu firma electrónica y a configurar 
+                    todos los accesos para tus trámites en línea.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    Facilitamos el proceso para que puedas hacer tus gestiones desde donde estés, de forma segura y eficiente.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    La transformación digital no es solo una tendencia, es una necesidad.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    Te acompañamos en este proceso para que aproveches todas las ventajas de la tecnología sin complicaciones.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

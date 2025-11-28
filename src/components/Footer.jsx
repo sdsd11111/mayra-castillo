@@ -87,7 +87,7 @@ const Footer = () => {
             </div>
             
             <div className="text-center text-gray-400 text-sm">
-              <p>Diseñado por @cesarreyesjaramillo.com 2025. Todos los derechos reservados.</p>
+              <p className="text-gray-900">Diseñado por <a href="https://cesarreyesjaramillo.com/" target="_blank" rel="noopener noreferrer" className="text-gray-900 hover:underline font-medium">Cesar Reyes</a> | Ing. Mayra Castillo 2025</p>
             </div>
           </div>
         </div>

@@ -87,7 +87,7 @@ const BusinessFormalization = () => {
   ];
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center hero-gradient">
         <div className="absolute inset-0 overlay-dark"></div>
@@ -125,60 +125,134 @@ const BusinessFormalization = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover-scale card-shadow">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4 text-primary-custom">Obtención del RUC</h3>
-                <p className="text-gray-600">
-                  Te ayudamos a obtener tu Registro Único de Contribuyentes de manera rápida y eficiente.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="relative">
+            {/* Mobile slider container */}
+            <div className="md:hidden overflow-hidden w-full">
+              <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4">
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <h3 className="text-xl font-semibold mb-4 text-primary-custom">Obtención del RUC</h3>
+                      <p className="text-gray-600">
+                        Te ayudamos a obtener tu Registro Único de Contribuyentes de manera rápida y eficiente.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <Card className="hover-scale card-shadow">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4 text-primary-custom">Registro en ARSA</h3>
-                <p className="text-gray-600">
-                  Gestionamos tu registro en la Agencia Nacional de Regulación, Control y Vigilancia Sanitaria.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <h3 className="text-xl font-semibold mb-4 text-primary-custom">Registro en ARSA</h3>
+                      <p className="text-gray-600">
+                        Gestionamos tu registro en la Agencia Nacional de Regulación, Control y Vigilancia Sanitaria.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <Card className="hover-scale card-shadow">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4 text-primary-custom">Certificado de Microempresario</h3>
-                <p className="text-gray-600">
-                  Obtén tu certificado que te permite acceder a beneficios fiscales como microempresario.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <h3 className="text-xl font-semibold mb-4 text-primary-custom">Certificado de Microempresario</h3>
+                      <p className="text-gray-600">
+                        Obtén tu certificado que te permite acceder a beneficios fiscales como microempresario.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <Card className="hover-scale card-shadow">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4 text-primary-custom">Notificación Sanitaria</h3>
-                <p className="text-gray-600">
-                  Te ayudamos a cumplir con los requisitos sanitarios para operar tu negocio.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <h3 className="text-xl font-semibold mb-4 text-primary-custom">Notificación Sanitaria</h3>
+                      <p className="text-gray-600">
+                        Te ayudamos a cumplir con los requisitos sanitarios para operar tu negocio.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <Card className="hover-scale card-shadow">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4 text-primary-custom">Permisos Municipales</h3>
-                <p className="text-gray-600">
-                  Gestionamos los permisos necesarios para que tu negocio cumpla con las normativas locales.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <h3 className="text-xl font-semibold mb-4 text-primary-custom">Permisos Municipales</h3>
+                      <p className="text-gray-600">
+                        Gestionamos los permisos necesarios para que tu negocio cumpla con las normativas locales.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <Card className="hover-scale card-shadow">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4 text-primary-custom">Registro de Marca</h3>
-                <p className="text-gray-600">
-                  Protege tu identidad empresarial registrando tu marca de manera oficial.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <h3 className="text-xl font-semibold mb-4 text-primary-custom">Registro de Marca</h3>
+                      <p className="text-gray-600">
+                        Protege tu identidad empresarial registrando tu marca de manera oficial.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop grid */}
+            <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card className="hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Obtención del RUC</h3>
+                  <p className="text-gray-600">
+                    Te ayudamos a obtener tu Registro Único de Contribuyentes de manera rápida y eficiente.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Registro en ARSA</h3>
+                  <p className="text-gray-600">
+                    Gestionamos tu registro en la Agencia Nacional de Regulación, Control y Vigilancia Sanitaria.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Certificado de Microempresario</h3>
+                  <p className="text-gray-600">
+                    Obtén tu certificado que te permite acceder a beneficios fiscales como microempresario.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Notificación Sanitaria</h3>
+                  <p className="text-gray-600">
+                    Te ayudamos a cumplir con los requisitos sanitarios para operar tu negocio.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Permisos Municipales</h3>
+                  <p className="text-gray-600">
+                    Gestionamos los permisos necesarios para que tu negocio cumpla con las normativas locales.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">Registro de Marca</h3>
+                  <p className="text-gray-600">
+                    Protege tu identidad empresarial registrando tu marca de manera oficial.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -209,7 +283,7 @@ const BusinessFormalization = () => {
       </section>
 
       {/* Beneficios */}
-      <section className="py-20 bg-fixed bg-center bg-cover"
+      <section className="py-20 overflow-hidden"
         style={{ backgroundImage: `url('/formalizacion/Parralax.jpg')`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         <ParallaxSection backgroundImage="/formalizacion/Parralax.jpg">
@@ -248,46 +322,102 @@ const BusinessFormalization = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="text-center hover-scale card-shadow">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FileCheck className="w-8 h-8 text-blue-600" />
+          <div className="relative">
+            {/* Mobile slider container */}
+            <div className="md:hidden overflow-hidden w-full">
+              <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4">
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <FileCheck className="w-8 h-8 text-blue-600" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">Credibilidad</h3>
+                      <p className="text-gray-600 text-sm">Genera confianza en clientes y proveedores</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Credibilidad</h3>
-                <p className="text-gray-600 text-sm">Genera confianza en clientes y proveedores</p>
-              </CardContent>
-            </Card>
 
-            <Card className="text-center hover-scale card-shadow">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="w-8 h-8 text-green-600" />
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Award className="w-8 h-8 text-green-600" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">Beneficios fiscales</h3>
+                      <p className="text-gray-600 text-sm">Acceso a regímenes tributarios preferenciales</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Beneficios fiscales</h3>
-                <p className="text-gray-600 text-sm">Acceso a regímenes tributarios preferenciales</p>
-              </CardContent>
-            </Card>
 
-            <Card className="text-center hover-scale card-shadow">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-purple-600" />
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Users className="w-8 h-8 text-purple-600" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">Acceso a financiamiento</h3>
+                      <p className="text-gray-600 text-sm">Mayores posibilidades de obtener créditos y financiamiento</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Acceso a financiamiento</h3>
-                <p className="text-gray-600 text-sm">Posibilidad de obtener créditos empresariales</p>
-              </CardContent>
-            </Card>
 
-            <Card className="text-center hover-scale card-shadow">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="w-8 h-8 text-orange-600" />
+                <div className="flex-none w-5/6 sm:w-2/3 pr-4 snap-center">
+                  <Card className="h-full">
+                    <CardContent className="p-6 h-full">
+                      <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <TrendingUp className="w-8 h-8 text-orange-600" />
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">Crecimiento</h3>
+                      <p className="text-gray-600 text-sm">Posibilidad de crecer y expandir tu negocio</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Crecimiento</h3>
-                <p className="text-gray-600 text-sm">Base sólida para expandir tu negocio</p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
+
+            {/* Desktop grid */}
+            <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <Card className="text-center hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <FileCheck className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">Credibilidad</h3>
+                  <p className="text-gray-600 text-sm">Genera confianza en clientes y proveedores</p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Award className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">Beneficios fiscales</h3>
+                  <p className="text-gray-600 text-sm">Acceso a regímenes tributarios preferenciales</p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">Acceso a financiamiento</h3>
+                  <p className="text-gray-600 text-sm">Mayores posibilidades de obtener créditos y financiamiento</p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center hover-scale card-shadow">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <TrendingUp className="w-8 h-8 text-orange-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">Crecimiento</h3>
+                  <p className="text-gray-600 text-sm">Posibilidad de crecer y expandir tu negocio</p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -302,16 +432,36 @@ const BusinessFormalization = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">{item.step}</span>
-                </div>
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+          <div className="relative">
+            {/* Mobile slider container */}
+            <div className="md:hidden w-full overflow-hidden px-4">
+              <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -ml-4">
+                {process.map((item, index) => (
+                  <div key={index} className="flex-none w-5/6 sm:w-2/3 pl-4 snap-center">
+                    <div className="bg-white p-6 rounded-lg shadow-md h-full">
+                      <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-white font-bold text-xl">{item.step}</span>
+                      </div>
+                      <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                      <p className="text-gray-600">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Desktop grid */}
+            <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
+              {process.map((item, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 bg-primary-custom rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-xl">{item.step}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                  <p className="text-gray-600">{item.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
