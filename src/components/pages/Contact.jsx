@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock,
-  Star,
-  MessageCircle
-} from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+// Email sending handled by our Express server
 import TestimonialSection from '@/components/TestimonialSection';
 
 const Contact = () => {
@@ -21,6 +15,9 @@ const Contact = () => {
     mensaje: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -29,36 +26,13 @@ const Contact = () => {
     }));
   };
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
 
-    // In development, show success without sending email
-    if (process.env.NODE_ENV === 'development') {
-      console.log('Development mode: Form data', formData);
-      setTimeout(() => {
-        setSubmitStatus({ 
-          type: 'success', 
-          message: 'Mensaje enviado correctamente (modo desarrollo). En producción, esto enviaría un correo.'
-        });
-        setFormData({
-          nombre: '',
-          email: '',
-          telefono: '',
-          mensaje: ''
-        });
-        setIsSubmitting(false);
-      }, 1000);
-      return;
-    }
-
-    // Production code
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('http://localhost:3001/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +59,7 @@ const Contact = () => {
           mensaje: ''
         });
       } else {
-        throw new Error(data.error || 'Error al enviar el mensaje');
+        throw new Error(data.message || 'Error al enviar el mensaje');
       }
     } catch (error) {
       console.error('Error:', error);
