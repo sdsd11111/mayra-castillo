@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { 
-  Home, 
-  Briefcase, 
-  User, 
-  Phone, 
+import {
+  Home,
+  Briefcase,
+  User,
+  Phone,
   ChevronDown,
   Menu,
   X
@@ -14,6 +14,24 @@ import {
 const Header = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Cerrar dropdown al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsServicesOpen(false);
+      }
+    };
+
+    if (isServicesOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isServicesOpen]);
 
   const services = [
     { name: 'Trámites Tributarios', path: '/servicios/tributarios' },
@@ -31,7 +49,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link 
+            <Link
               to="/"
               onClick={() => window.scrollTo(0, 0)}
               className="flex items-center space-x-2 text-gray-700 hover:text-primary-custom smooth-transition"
@@ -41,29 +59,32 @@ const Header = () => {
             </Link>
 
             {/* Services Dropdown */}
-            <div 
+            <div
               className="relative"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setTimeout(() => setIsServicesOpen(false), 2000)}
+              ref={dropdownRef}
             >
-              <button className="flex items-center space-x-2 text-gray-700 hover:text-primary-custom smooth-transition">
+              <button
+                className="flex items-center space-x-2 text-gray-700 hover:text-primary-custom smooth-transition"
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
+              >
                 <Briefcase size={18} />
                 <span>Servicios</span>
-                <ChevronDown size={16} />
+                <ChevronDown size={16} className={`transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
               </button>
-              
+
               {isServicesOpen && (
-                <div 
+                <div
                   className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border"
-                  onMouseEnter={() => setIsServicesOpen(true)}
-                  onMouseLeave={() => setTimeout(() => setIsServicesOpen(false), 2000)}
                 >
                   <div className="py-2">
                     {services.map((service, index) => (
                       <Link
                         key={index}
                         to={service.path}
-                        onClick={() => window.scrollTo(0, 0)}
+                        onClick={() => {
+                          setIsServicesOpen(false);
+                          window.scrollTo(0, 0);
+                        }}
                         className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary-custom smooth-transition"
                       >
                         {service.name}
@@ -74,7 +95,7 @@ const Header = () => {
               )}
             </div>
 
-            <Link 
+            <Link
               to="/nosotros"
               onClick={() => window.scrollTo(0, 0)}
               className="flex items-center space-x-2 text-gray-700 hover:text-primary-custom smooth-transition"
@@ -83,7 +104,7 @@ const Header = () => {
               <span>Nosotros</span>
             </Link>
 
-            <Link 
+            <Link
               to="/contacto"
               onClick={() => window.scrollTo(0, 0)}
               className="flex items-center space-x-2 text-gray-700 hover:text-primary-custom smooth-transition"
@@ -115,8 +136,8 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t">
             <nav className="flex flex-col space-y-4 mt-4">
-              <Link 
-                to="/" 
+              <Link
+                to="/"
                 className="flex items-center space-x-2 text-gray-700"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
@@ -149,8 +170,8 @@ const Header = () => {
                 </div>
               </div>
 
-              <Link 
-                to="/nosotros" 
+              <Link
+                to="/nosotros"
                 className="flex items-center space-x-2 text-gray-700"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
@@ -161,8 +182,8 @@ const Header = () => {
                 <span>Nosotros</span>
               </Link>
 
-              <Link 
-                to="/contacto" 
+              <Link
+                to="/contacto"
                 className="flex items-center space-x-2 text-gray-700"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
