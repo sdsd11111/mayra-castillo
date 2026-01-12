@@ -4,12 +4,12 @@ import { Helmet } from 'react-helmet-async';
 const SEO = ({
     title = "Ing. Mayra Castillo - Contadora Profesional",
     description = "Servicios profesionales de contabilidad, asesoría tributaria, comercio exterior y formalización de negocios en Loja, Ecuador.",
-    image = "/Logo.jpg",
-    url = "https://ingmayracastillo.com",
+    image = "/logo-cuadrado.png",
+    url = "https://www.ingmayracastillo.com",
     type = "website"
 }) => {
-    const fullUrl = url.startsWith('http') ? url : `https://ingmayracastillo.com${url}`;
-    const fullImage = image.startsWith('http') ? image : `https://ingmayracastillo.com${image}`;
+    const fullUrl = url.startsWith('http') ? url : `https://www.ingmayracastillo.com${url}`;
+    const fullImage = image.startsWith('http') ? image : `https://www.ingmayracastillo.com${image}`;
 
     return (
         <Helmet>
@@ -23,8 +23,9 @@ const SEO = ({
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:image" content={fullImage} />
-            <meta property="og:image:width" content="1200" />
-            <meta property="og:image:height" content="630" />
+            <meta property="og:image:width" content="512" />
+            <meta property="og:image:height" content="512" />
+            <meta property="og:image:type" content="image/png" />
             <meta property="og:locale" content="es_EC" />
             <meta property="og:site_name" content="Ing. Mayra Castillo" />
 

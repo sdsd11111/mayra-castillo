@@ -1,0 +1,23 @@
+{
+    "name": "Ing. Mayra Castillo - Contadora Profesional",
+    "short_name": "Mayra Castillo",
+    "description": "Servicios profesionales de contabilidad, asesoría tributaria, comercio exterior y formalización de negocios en Loja, Ecuador",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2E7BB5",
+    "icons": [
+        {
+            "src": "/logo-cuadrado.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/logo-cuadrado.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
